@@ -1,0 +1,16 @@
+Order
+
+- Introduction
+- Create directory
+- Install packages
+- Project setup
+- template rendering
+- static file 
+- Database setup
+- Model setup
+  - Create database
+    - python
+    >>> from app import app, db
+    >>> app.app_context().push()
+    >>> db.create_all()
+-

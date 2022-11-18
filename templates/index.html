@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>YoBlog</title>
+{% endblock %}
+
+{% block body %}
+<h1>Welcome, YoBlog!</h1>
+<br>
+<form action="/add" method="post">
+    <label for="form1">Title:</label>
+    <input type="text" id="form1" name="title" /><br>
+    <label for="form2">Description:</label>
+    <textarea id="form2" name="content"></textarea><br>
+    <button type="submit">Save</button>
+</form>
+<br>
+{% if posts %}
+    {% for blog in posts %}
+    <h2>{{ blog.title }}</h2>
+    <h3>{{ blog.content }}</h3>
+    <hr>
+    {% endfor %}
+{% else %}
+    <h2>No blog post</h2>
+{% endif %}
+{% endblock %}
