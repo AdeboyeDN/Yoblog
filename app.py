@@ -37,5 +37,36 @@ def add_blog():
     except:
         return 'There was an issue uploading your article'
 
+
+@app.route('/delete/<int:id>')
+def delete_blog(id):
+    blog_to_delete = Blog.query.get_or_404(id)
+
+    try:
+        db.session.delete(blog_to_delete)
+        db.session.commit()
+        return redirect('/')
+    except:
+        return 'There was a problem deleting this article'
+
+
+"""
+@app.route('/update/<int:id>', methods=['GET', 'POST'])
+def update_blog(id):
+    task = Blog.query.get_or_404(id)
+
+    if request.method == 'POST':
+        blog.content = request.form['content']
+
+        try:
+            db.session.commit()
+            return redirect('/')
+        except:
+            return 'There was an issue updating your task'
+
+    else:
+        return render_template('update.html', task=task)
+"""
+
 if __name__ == "__main__":
     app.run(debug=True)

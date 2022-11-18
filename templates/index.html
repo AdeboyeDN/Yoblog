@@ -5,23 +5,35 @@
 {% endblock %}
 
 {% block body %}
-<h1>Welcome, YoBlog!</h1>
+<div class="text-center">
+    <h1>YoBlog</h1>
+</div>
 <br>
 <form action="/add" method="post">
-    <label for="form1">Title:</label>
-    <input type="text" id="form1" name="title" /><br>
-    <label for="form2">Description:</label>
-    <textarea id="form2" name="content"></textarea><br>
-    <button type="submit">Save</button>
+    <div class="mb-3">
+        <label for="form1" class="form-label">Title</label>
+        <input type="text" class="form-control" id="form1" name="title">
+    </div>
+    <div class="mb-3">
+        <label for="form2" class="form-label">Description</label>
+        <textarea name="content" class="form-control" id="form2"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-<br>
+<br><hr>
 {% if posts %}
     {% for blog in posts %}
-    <h2>{{ blog.title }}</h2>
-    <h3>{{ blog.content }}</h3>
+    <h2>{{ blog.title }}</h2>    <button type="button" class="btn btn-info">Update</button>
+
+    <p>{{ blog.content }}</p>
+    <form action="/delete/{{blog.id}}" method="get">
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
     <hr>
     {% endfor %}
 {% else %}
-    <h2>No blog post</h2>
+    <div class="text-center">
+        <h2>No blog post</h2>
+    </div>
 {% endif %}
 {% endblock %}
