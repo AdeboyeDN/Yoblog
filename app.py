@@ -50,23 +50,23 @@ def delete_blog(id):
         return 'There was a problem deleting this article'
 
 
-"""
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
 def update_blog(id):
-    task = Blog.query.get_or_404(id)
+    blog = Blog.query.get_or_404(id)
 
     if request.method == 'POST':
+        blog.title = request.form['title']
         blog.content = request.form['content']
 
         try:
             db.session.commit()
             return redirect('/')
         except:
-            return 'There was an issue updating your task'
+            return 'There was an issue updating your blog post'
 
     else:
-        return render_template('update.html', task=task)
-"""
+        return render_template('update.html', blog=blog)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

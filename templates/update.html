@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Update YoBlog</title>
+{% endblock %}
+
+{% block body %}
+<div class="text-center">
+    <h1>Update YoBlog</h1>
+</div>
+<br>
+<form action="/update/{{blog.id}}" method="post">
+    <div class="mb-3">
+        <label for="form1" class="form-label">Title</label>
+        <input type="text" class="form-control" id="form1" name="title" value="{{blog.title}}">
+    </div>
+    <div class="mb-3">
+        <label for="form2" class="form-label">Description</label>
+        <textarea name="content" class="form-control" id="form2">{{blog.content}}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

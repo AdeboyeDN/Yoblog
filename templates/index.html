@@ -23,9 +23,9 @@
 <br><hr>
 {% if posts %}
     {% for blog in posts %}
-    <h2>{{ blog.title }}</h2>    <button type="button" class="btn btn-info">Update</button>
-
+    <h2>{{ blog.title }}</h2><a href="/update/{{blog.id}}">Update</a>
     <p>{{ blog.content }}</p>
+    <p><b>{{ blog.date_created.date() }}</b></p>
     <form action="/delete/{{blog.id}}" method="get">
         <button type="submit" class="btn btn-danger">Delete</button>
     </form>
